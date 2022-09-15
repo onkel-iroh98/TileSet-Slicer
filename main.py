@@ -90,17 +90,16 @@ def slice(inputArr, columns, rows, inputwidth, inputheight, inputtype = "rgba"):
     rowpx = inputwidth * pixel
     for x in range(slices):
         tmp = np.zeros(shape=(pxheight, pxwidth)).astype("int8")
-        print(tmp.shape)
         for y in range(len(tmp)):
             reihe = x // columns
             offset = x % columns
-            print(offset)
             iter = reihe * junk + y * rowpx + offset * pxwidth
             for z in range(len(tmp[y])):
                 tmp[y][z] = inputArr[iter]
                 iter += 1
         global savedirectory
-        png.from_array(tmp, "RGBA").save(str(savedirectory)+ str(x) + ".png")
+        print(str(x) + " Elements saved.")
+        png.from_array(tmp, "RGBA").save(str(savedirectory)+"/"+ str(x) + ".png")
 
 
 # GUI TKinter
